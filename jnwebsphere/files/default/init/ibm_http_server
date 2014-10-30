@@ -1,0 +1,30 @@
+#! /bin/sh
+###
+# chkconfig: 235 98 55
+# description: Manages the services you are controlling with the chkconfig command
+###
+
+
+case "$1" in
+  start)
+          echo -n "Starting IBM HTTP Server.."
+          /opt/IBM/HTTPServer/bin/apachectl start
+          echo "Done"
+          ;;
+  stop)
+          echo -n "Stopping IBM HTTP Server.."
+          /opt/IBM/HTTPServer/bin/apachectl stop
+          echo "Done"
+          ;;
+  restart)
+          $0 stop
+          sleep 2
+          $0 start
+          ;;
+  *)
+        echo "Usage: /sbin/service ibm_http_server {start|stop|restart}"
+        exit 1
+esac
+
+
+exit 0

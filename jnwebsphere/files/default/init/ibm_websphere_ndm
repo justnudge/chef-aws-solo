@@ -1,0 +1,26 @@
+#! /bin/sh
+###
+# chkconfig: 235 98 55
+# description: Manages the services you are controlling with the chkconfig command
+###
+
+
+case "$1" in
+  start)
+          /opt/IBM/WebSphere/AppServer/profiles/Dmgr01/bin/startManager.sh
+          ;;
+  stop)
+          /opt/IBM/WebSphere/AppServer/profiles/Dmgr01/bin/stopManager.sh
+          ;;
+  restart)
+          $0 stop
+          sleep 2
+          $0 start
+          ;;
+  *)
+        echo "Usage: /sbin/service ibm_websphere_ndm {start|stop|restart}"
+        exit 1
+esac
+
+
+exit 0
